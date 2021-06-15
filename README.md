@@ -1,7 +1,7 @@
 # EcgServer
 ## Project Requirement
-- [2020年TI杯大学生电子设计竞赛 无线运动传感器节点设计（A题）-信息发布-全国大学生电子设计竞赛培训网](https://www.nuedc-training.com.cn/index/news/details/new_id/222)
-- [2020 年 TI 杯省级大学生电子设计竞赛仪器设备和主要元器件清单-信息发布-全国大学生电子设计竞赛培训网](https://www.nuedc-training.com.cn/index/news/details/new_id/201)
+- [2020年TI杯大学生电子设计竞赛 无线运动传感器节点设计（A题)](https://www.nuedc-training.com.cn/index/news/details/new_id/222)
+- [2020 年 TI 杯省级大学生电子设计竞赛仪器设备和主要元器件清单](https://www.nuedc-training.com.cn/index/news/details/new_id/201)
 
 
 
