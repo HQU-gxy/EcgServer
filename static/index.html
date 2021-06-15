@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Real-Time Measurement</title>
+    <script src="js/smoothie.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="js/knockout-3.5.1.js"></script> -->
+    <script src="js/csv.js"></script>
+    <script src="js/client.js"></script>
+    <script src="js/papaparse.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+      .chart{
+        width: 100%;
+        height: 200px;
+      }
+      .mtp-10{
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body onload="init()">
+    <div class=".container">
+
+      <div class="card, mr-3">
+        <h5 class="card-header">ECG</h5>
+        <div class="card-body">
+          <canvas id="ecg" class="chart"></canvas>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card"> <div class="card-body">
+              <h5 class="card-title"><img src="pulse.svg"> 心率</h5>
+              <h1><span id="heart">60</span><span> bpm</span></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card, mr-3">
+        <h5 class="card-header">温度</h5>
+        <div class="card-body">
+          <canvas id="temp" class="chart"></canvas>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><img src="temp.svg">温度</h5>
+              <h1><span id="tempAvg">30</span><span>°C</span></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card, mr-3">
+        <h5 class="card-header">加速度</h5>
+        <div class="card-body">
+          <canvas id="motion" class="chart"></canvas>
+        </div>
+      </div>
+
+
+      <div class="row">
+         <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><img src="walk.svg">计步器</h5>
+              <h1 id="pedo">0</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="card"> <div class="card-body">
+              <h5 class="card-title"><img src="dist.svg">路程</h5>
+              <h1><span id="distance">0</span><span>m</span></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card"> <div class="card-body">
+              <h5 class="card-title"><img src="cal.svg">卡路里</h5>
+              <h1><span id="cal">0</span><span> cal</span></h1>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><img src="export.svg">导出选项</h5>
+              <p>导出为csv</p>
+              <button type="button" id="ecgButton" onclick="ecgExport()" class="btn btn-outline-primary">导出</button>
+              <!-- <button type="button" id="ecgButton" onclick="otherExport()" class="btn btn-outline-primary">导出其他</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+        <!-- <div class="col-sm-6">
+          <div class="card, w-50"> <div class="card-body">
+              <h5 class="card-title">卡路里</h5>
+              <h1 id="cal"><span id="cal-val">0</span><span>Calorie</span></h1>
+            </div>
+          </div>
+        </div> -->
+
+
+    </div>
+  </body>
+</html>

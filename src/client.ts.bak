@@ -1,0 +1,51 @@
+// import chart from 'smoothie'
+const chart = require('smoothie')
+
+class Data{
+  ecg:number[]
+  temp: number[]
+  motion_x:number[]
+  motion_y:number[]
+  motion_z:number[]
+  time_stamp:number
+  constructor(ecg: number[], temp: number[], motion_x: number[], motion_y: number[], motion_z: number[], time_stamp: number) {
+    this.ecg = ecg
+    this.temp = temp
+    this.motion_x = motion_x
+    this.motion_y = motion_y
+    this.motion_z = motion_z
+    this.time_stamp=time_stamp
+  }
+}
+
+class DataArray{
+  Raw:Data[]=[]
+  Ecg:number[]=[]
+  Temperature: number[]=[]
+  Motion_x:number[]=[]
+  Motion_y:number[]=[]
+  Motion_z:number[]=[]
+  Add(rawData:Data,callback:(rawData:Data)=>void) {
+    this.Raw.push(rawData)
+    this.Ecg=this.Ecg.concat(rawData.ecg)
+    this.Temperature=this.Temperature.concat(rawData.temp)
+    this.Motion_x=this.Motion_x.concat(rawData.motion_x)
+    this.Motion_y=this.Motion_y.concat(rawData.motion_y)
+    this.Motion_z=this.Motion_z.concat(rawData.motion_z)
+    callback(rawData)
+  }
+}
+
+const dataArray=new DataArray
+const socket = new WebSocket('ws://localhost:3000')
+socket.addEventListener('message', (event) => {
+  const parsed=JSON.parse(event.data)
+  const parsedData = new Data(parsed.ecg, parsed.temp, parsed.motion_x, parsed.motion_y, parsed.motion_z, parsed.time_stamp)
+  dataArray.Add(parsedData,()=>{})
+  // console.log(dataArray.Temperature)
+})
+
+function createTimeline() {
+  const smoothie=new chart.SmoothieChart()
+  smoothie.streamTo(document.getElementById("chart"))
+}
